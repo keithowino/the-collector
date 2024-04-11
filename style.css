@@ -1,0 +1,13 @@
+
+.css-navbar-brand {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.new-item-card {
+  font-size: 13px;
+}
+
+.latest-list {
+  display: flex;
+}
