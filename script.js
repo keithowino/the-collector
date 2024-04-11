@@ -1,68 +1,73 @@
-// "use strict";
+"use strict";
 
-// const appName = "the collector";
+document.addEventListener("DOMContentLoaded", action);
 
-// document.title = appName.toUpperCase();
+function action(){
+  const appName = "the collector";
+  const imgBaseUrl = "http://image.tmdb.org/t/p/w500";
+  const config = "/configuration";
 
-// const siteTitleRef = document.querySelectorAll("#js-site-tile-ref");
-
-// siteTitleRef.forEach((element) => {
-//   element.textContent = appName;
-// })
-
-
-// // let cont = document.querySelector(".latest-list")
+  const trendingContainer = document.querySelector("#trending-list");
+  const upcomingContainer = document.querySelector("#upcoming-list");
 
 
-// const url = 'https://ott-details.p.rapidapi.com/getnew?region=US&page=1';
+  document.title = appName.toUpperCase();
 
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': '1188aa05b6msh4990dbeb17d5424p1534c5jsnd66623cc56f1',
-// 		'X-RapidAPI-Host': 'ott-details.p.rapidapi.com'
-// 	}
-// };
+  const siteTitleRef = document.querySelectorAll("#js-site-tile-ref");
 
-// fetch(url, options)
-//   .then(response => response.json())
-//   .then((data) => {
-//   let arr = data.results
-//   console.log(arr);
-//   arr.forEach((item) => {
-//     let html = `
-//     <div class="card new-item-card" style="width: 18rem;">
-//       <img src="${item.imageurl[0]}" class="card-img-top img-fluid" alt="the roads not taken movie poster">
-//       <div class="card-body">
-//         <h5 class="card-title">${item.title}</h5>
-//         <p class="card-text">${item.released}</p>
-//         <a href="#" class="btn btn-secondary">In detail</a>
-//       </div>
-//     </div>
-//     `;
+  siteTitleRef.forEach((element) => {
+    element.textContent = appName;
+  })
 
-//     document.querySelector(".latest-list").innerHTML += html;;
-
-//   })
-// })
-//   .catch(error => alert(error.message));
-
-
-
-const b = document.querySelector("#searchBtn");
-const l = document.querySelector(".latest-list");
-
-const test = async function(){
-  const s = document.querySelector("#searchInput").value.trim();
-
-  fetch("https://imdb8.p.rapidapi.com/v2/search?searchTerm=tom%20cruise&type=NAME&first=20", {
+  const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '1188aa05b6msh4990dbeb17d5424p1534c5jsnd66623cc56f1',
-		  'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNTdlMTFjYzUyNWE2ZGNmMGQxMjZmMDI5NDAzYjZjNCIsInN1YiI6IjY2MTdhMTc4NDUzOWQwMDE3ZGZjOTZhYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.r7QXZxUOHWRdgh6irsq9gjafszv5kJHUp7crlIC2Flo'
     }
-  })
-  .then(res => res.json())
-  .then((data) => console.log(data))
-  .catch((error) => alert(error.message))
-}
+  };
+  
+  // TRENDING MOVIES
+  fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', options)
+    .then(response => response.json())
+    .then(response => {
+      const trendingMovieArr = response.results;
+      console.log(trendingMovieArr);
+
+      trendingMovieArr.forEach(element => {
+        let html = `
+        <div class="card new-item-card" style="width: 18rem;">
+          <img src="${imgBaseUrl + element.poster_path}" class="card-img-top img-fluid" alt="${element.title} movie poster">
+          <div class="card-body">
+            <h5 class="card-title">${element.title}</h5>
+          </div>
+        </div>
+        `;
+
+        trendingContainer.innerHTML += html;
+      });
+    })
+    .catch(err => console.error(err));
+
+    // UPCOMING MOVIES
+    fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', options)
+    .then(response => response.json())
+    .then(response => {
+      const upcomingMovieArr = response.results;
+
+      upcomingMovieArr.forEach(element => {
+        let html = `
+        <div class="card new-item-card" style="width: 18rem;">
+          <img src="${imgBaseUrl + element.poster_path}" class="card-img-top img-fluid" alt="${element.title} movie poster">
+          <div class="card-body">
+            <h5 class="card-title">Title : ${element.title}</h5>
+            <h5 class="card-title">Release Date : ${element.release_date}</h5>
+          </div>
+        </div>
+        `;
+
+        upcomingContainer.innerHTML += html;
+      });
+    })
+    .catch(err => console.error(err));
+};
