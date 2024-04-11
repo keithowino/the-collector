@@ -32,7 +32,6 @@ function action(){
     .then(response => response.json())
     .then(response => {
       const trendingMovieArr = response.results;
-      console.log(trendingMovieArr);
 
       trendingMovieArr.forEach(element => {
         let html = `
@@ -47,27 +46,39 @@ function action(){
         trendingContainer.innerHTML += html;
       });
     })
-    .catch(err => console.error(err));
+    .catch(err => alert(err.message));
 
     // UPCOMING MOVIES
-    fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', options)
+
+    let page = Math.floor(Math.random() * 61);
+    console.log("page " + page);
+
+    fetch(`https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${page}`, options)
     .then(response => response.json())
     .then(response => {
       const upcomingMovieArr = response.results;
 
       upcomingMovieArr.forEach(element => {
-        let html = `
-        <div class="card new-item-card" style="width: 18rem;">
-          <img src="${imgBaseUrl + element.poster_path}" class="card-img-top img-fluid" alt="${element.title} movie poster">
-          <div class="card-body">
-            <h5 class="card-title">Title : ${element.title}</h5>
-            <h5 class="card-title">Release Date : ${element.release_date}</h5>
+        let imgUrl;
+        let html;
+
+        if(element.poster_path !== null){
+          imgUrl = imgBaseUrl + element.poster_path;
+          html = `
+          <div class="card new-item-card" style="width: 18rem;">
+            <img src="${imgUrl}" class="card-img-top img-fluid" alt="${element.title} movie poster">
+            <div class="card-body">
+              <h5 class="card-title">Title : ${element.title}</h5>
+              <h5 class="card-title">Release Date : ${element.release_date}</h5>
+            </div>
           </div>
-        </div>
-        `;
+          `;
+        }else{
+          html = "";
+        }
 
         upcomingContainer.innerHTML += html;
       });
     })
-    .catch(err => console.error(err));
+    .catch(err => alert(err.message));
 };
