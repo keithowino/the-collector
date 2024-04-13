@@ -57,8 +57,10 @@
                 </li> -->
               </ul>
               <form class="d-flex" role="search">
-                <input class="form-control me-2" id="searchInput" type="search" placeholder="Search movie titles" aria-label="Search">
-                <button class="btn btn-outline-success" id="searchBtn" type="submit">Search</button>
+                <div class="input-group col-md-6">
+                  <input type="text" class="form-control search-items-input" id="movieNameTvShowInput" placeholder="Movies/ Shows/ Actors" aria-label="Search" aria-describedby="movieNameTvShowSearchBtn">
+                  <button class="btn search-items-btn" type="submit" id="movieNameTvShowSearchBtn">Search</button>
+                </div>
               </form>
             </div>
           </div>
@@ -66,16 +68,31 @@
       </div>
     </header>
     <main class="main">
-      <div class="container">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-2 col-sm-12">
+            Placeholder
+          </div>
+          <div class="col-md-10 col-sm-12">
+            <div class="canvas">
+              <div class="searched-results">
+                <div class="tv-shows-results search-result-layout"></div>
+                <div class="movie-results search-result-layout"></div>
+                <div class="person-results search-result-layout"></div>
+              </div>
+              <div class="dummy-items"></div>
+            </div>
+          </div>
+        </div>
         <div id="home-view">
-          <section class="latest">
+          <!-- <section class="latest">
             <h3 class="sec-title">Trending Films</h3>
             <div id="trending-list"></div>
           </section>
           <section class="latest">
             <h3 class="sec-title">Upcoming Films</h3>
             <div id="upcoming-list"></div>
-          </section>
+          </section> -->
         </div>
       </div>
     </main>
