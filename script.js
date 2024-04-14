@@ -18,7 +18,7 @@ function action(){
   // const trendingContainer = document.querySelector("#trending-list");
   // const upcomingContainer = document.querySelector("#upcoming-list");
 
-  const imgBaseUrl = "http://image.tmdb.org/t/p/w500";
+  const imgBaseUrl = "https://image.tmdb.org/t/p/w500";
 
     const movieNameTvShowSearchBtnElement = document.querySelector("#movieNameTvShowSearchBtn");
 
