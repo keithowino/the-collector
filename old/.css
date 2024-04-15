@@ -1,0 +1,59 @@
+html, 
+body {
+  background: rgb(2,0,36);
+  background: linear-gradient(236deg, rgba(2,0,36,1) 0%, rgba(5,3,42,0.7679446778711485) 53%, rgba(0,212,255,1) 100%);
+  height: 100%;
+  background-repeat: no-repeat;
+}
+
+.css-navbar-brand {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.new-item-card {
+  font-size: 13px;
+}
+
+#trending-list, 
+#upcoming-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search-result-layout {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: .5em;
+  background: rgb(2,0,36);
+  background: linear-gradient(236deg, rgba(2,0,36,1) 0%, rgba(5,3,42,0.04805672268907568) 53%, rgba(0,212,255,1) 100%);
+  text-align: center;
+  text-shadow: -5px 5px 3px rgba(0,0,0,0.41);
+  font-weight: bold;
+}
+
+.card_title {
+  color: #fa6305;
+}
+
+.sec-title {
+  font-weight: bold;
+  color: #fff;
+}
+
+.search-items-btn:hover {
+  background-color: rgb(2,0,36);
+  color: #fa6305;
+}
+
+.search-items-btn {
+  border: 1px solid rgb(2,0,36);
+}
+
+.search-items-input:is(:hover, :focus, :active) {
+  background-color: #fff;
+  color: #fa6305;
+}
