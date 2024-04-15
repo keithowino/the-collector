@@ -22,7 +22,7 @@ function add_click_effect_to_card (cards) {
     })
 }
 
-// SEARCH MOVIES
+/* SEARCH MOVIES */ 
 async function get_movie_by_search (search_term) {
     const resp = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${search_term}`)
     const respData = await resp.json()
