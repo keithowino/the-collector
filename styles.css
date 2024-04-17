@@ -5,11 +5,22 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
+:root {
+    --brand-red : #f00;
+}
+
 body {
-    background-color: #151515;
+    /* background-color: #151515; */
+    background: rgb(2,0,36);
+    background: linear-gradient(158deg, rgba(2,0,36,1) 0%, rgba(0,2,50,1) 47%, rgba(0,212,255,1) 100%);
 }
 ::-webkit-scrollbar {
     display: none;
+}
+
+.primary-nav {
+    background-color: var(--brand-red);
 }
 
 .card {

@@ -4,6 +4,10 @@ const appName = "the collector";
 document.title = appName.toUpperCase();
 const siteTitleRef = document.querySelectorAll("#js-site-tile-ref");
 
+siteTitleRef.forEach(element => {
+    element.textContent = appName;
+});
+
 const API_KEY = `057e11cc525a6dcf0d126f029403b6c4`
 const image_path = `https://image.tmdb.org/t/p/w1280`
 
