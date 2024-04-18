@@ -35,7 +35,7 @@ async function init_multi_search(value) {
             switch (item.media_type) {
                 case "movie":
                     let movieHTML = `
-                        <div class="card text-bg-dark my-2">
+                        <div class="card text-bg-dark m-2">
                             <div class="display-img">
                                 <img src="${baseImgUrl + item.poster_path}" class="card-img img-fluid" alt="${item.title} movie info.">
                             </div>
@@ -51,7 +51,7 @@ async function init_multi_search(value) {
 
                 case "tv":
                     let tVShowHTML = `
-                    <div class="card text-bg-dark my-2">
+                    <div class="card text-bg-dark m-2">
                         <div class="display-img">
                             <img src="${baseImgUrl + item.poster_path}" class="card-img img-fluid" alt="${item.original_name} show info.">
                         </div>
@@ -67,7 +67,7 @@ async function init_multi_search(value) {
 
                 case "person":
                     let personHTML = `
-                    <div class="card text-bg-dark my-2">
+                    <div class="card text-bg-dark m-2">
                         <div class="display-img">
                             <img src="${baseImgUrl + item.profile_path}" class="card-img img-fluid" alt="${item.original_name}'s details.">
                         </div>
